@@ -1,0 +1,50 @@
+{
+  "name": "mock-shop",
+  "version": "1.0.0",
+  "description": "Mock Shop is a simple backend API for a shopping outlet",
+  "main": "server.js",
+  "scripts": {
+    "clean": "rm -rf dist && mkdir dist",
+    "build-server": "babel src --out-dir dist",
+    "build": "npm run clean && npm run build-server",
+    "start:dev": "nodemon ./src/app.js --exec babel-node",
+    "start": "node dist/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fegoworks/mock-shop.git"
+  },
+  "keywords": [
+    "e-commerce",
+    "cart"
+  ],
+  "author": "Edafe Oghenefego",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fegoworks/mock-shop/issues"
+  },
+  "homepage": "https://github.com/fegoworks/mock-shop#readme",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "coveralls": "^3.0.9",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.20.1",
+    "mocha": "^7.0.1",
+    "supertest": "^4.0.2"
+  },
+  "dependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.8.4",
+    "@babel/node": "^7.8.4",
+    "@babel/plugin-transform-runtime": "^7.8.3",
+    "@babel/preset-env": "^7.8.4",
+    "@babel/runtime": "^7.8.4",
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "pg": "^7.18.1",
+    "uuidv4": "^6.0.2"
+  }
+}
