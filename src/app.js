@@ -2,6 +2,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import env from 'dotenv';
+import userRoute from './routes/user.route';
 
 env.config();
 const port = process.env.PORT || 3000;
@@ -27,6 +28,8 @@ app.use(
     extended: false,
   })
 );
+
+app.use('/api/v1/', userRoute);
 
 app.get('/', (req, res) => {
   res.send(`<h1>Welcome To The Mock Shop Application</h1>
