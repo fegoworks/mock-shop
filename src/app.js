@@ -1,6 +1,7 @@
 /* eslint-disable indent */
 import express from 'express';
 import bodyParser from 'body-parser';
+import cookieParser from 'cookie-parser';
 import env from 'dotenv';
 import userRoute from './routes/user.route';
 
@@ -28,6 +29,7 @@ app.use(
     extended: false,
   })
 );
+app.use(cookieParser());
 
 app.use('/api/v1/', userRoute);
 
@@ -45,8 +47,9 @@ app.all('*', (req, res) => {
   });
 });
 
-app.listen(port, () => console.log(`Welcome, listening on ${port}`))
-  .on('error', (err) => {
+app
+  .listen(port, () => console.log(`Welcome, listening on ${port}`))
+  .on('error', err => {
     if (err.syscall !== 'listen') {
       throw err;
     }
