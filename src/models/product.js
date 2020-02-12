@@ -1,41 +1,45 @@
-const user = (sequelize, DataTypes) => {
-  const User = sequelize.define('User', {
-    userId: {
+const product = (sequelize, DataTypes) => {
+  const Product = sequelize.define('Product', {
+    ProductId: {
       type: DataTypes.STRING,
       required: true
     },
-    firstName: {
+    name: {
       type: DataTypes.STRING,
       required: true
     },
-    lastName: {
+    description: {
       type: DataTypes.STRING,
       required: true
     },
-    email: {
+    category: {
       type: DataTypes.STRING,
       required: true
     },
-    password: {
+    price: {
+      type: DataTypes.FLOAT,
+      required: true
+    },
+    imageUrl: {
       type: DataTypes.STRING,
       required: true
     },
-    isAdmin: {
+    inStock: {
       type: DataTypes.BOOLEAN,
       required: true
     }
   }, {});
-  User.associate = (models) => {
+  Product.associate = (models) => {
     // associations can be defined here
-    User.hasMany(models.Product, {
-      foreignKey: 'productId'
+    Product.belongsTo(models.User, {
+      foreignKey: 'userId'
     });
 
-    // User.hasMany(models.Cart, {
+    // Product.hasMany(models.Cart, {
     //   foreignKey: 'cartId'
     // });
   };
-  return User;
+  return Product;
 };
 
-export default user;
+export default product;

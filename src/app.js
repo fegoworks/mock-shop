@@ -4,6 +4,7 @@ import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import env from 'dotenv';
 import userRoute from './routes/user.route';
+import productRoute from './routes/product.route';
 
 env.config();
 const port = process.env.PORT || 3000;
@@ -32,6 +33,7 @@ app.use(
 app.use(cookieParser());
 
 app.use('/api/v1/', userRoute);
+app.use('/api/v1/', productRoute);
 
 app.get('/', (req, res) => {
   res.send(`<h1>Welcome To The Mock Shop Application</h1>
@@ -49,7 +51,7 @@ app.all('*', (req, res) => {
 
 app
   .listen(port, () => console.log(`Welcome, listening on ${port}`))
-  .on('error', err => {
+  .on('error', (err) => {
     if (err.syscall !== 'listen') {
       throw err;
     }

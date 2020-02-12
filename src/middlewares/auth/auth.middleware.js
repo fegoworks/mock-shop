@@ -1,5 +1,5 @@
+/* eslint-disable operator-linebreak */
 import jwt from 'jsonwebtoken';
-
 
 const secret = process.env.SECRET;
 
