@@ -1,4 +1,4 @@
-module.exports = (sequelize, DataTypes) => {
+const user = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
     userId: {
       type: DataTypes.STRING,
@@ -27,6 +27,15 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   User.associate = (models) => {
     // associations can be defined here
+    User.hasMany(models.Product, {
+      foreignKey: 'productId'
+    });
+
+    // User.hasMany(models.Cart, {
+    //   foreignKey: 'cartId'
+    // });
   };
   return User;
 };
+
+export default user;
