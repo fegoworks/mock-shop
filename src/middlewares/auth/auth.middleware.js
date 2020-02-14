@@ -23,7 +23,6 @@ const verifyToken = {
 
       // If everything is good, save to request for use in other routes
       req.id = decoded.id;
-      req.isAdmin = decoded.isAdmin;
       return next();
     });
   },

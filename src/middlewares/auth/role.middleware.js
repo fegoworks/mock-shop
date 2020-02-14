@@ -1,10 +1,20 @@
+import {
+  User
+} from '../../models';
+
 const permissions = {
-  adminOnly(req, res, next) {
-    if (req.isAdmin === true) {
+  async adminOnly(req, res, next) {
+    const {
+      id
+    } = req;
+    const {
+      isAdmin
+    } = await User.findByPk(id);
+    if (isAdmin) {
       return next();
     }
-    return res.json({
-      status: 403,
+    return res.status(403).json({
+      status: 'Request failed',
       error: 'Unauthorized Access',
     });
   },
