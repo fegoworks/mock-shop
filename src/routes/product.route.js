@@ -12,5 +12,20 @@ router.post('/products/',
   upload.single('image'),
   productController.addProduct);
 
+router.patch('/products/:productId',
+  auth.verify,
+  permissions.adminOnly,
+  upload.single('image'),
+  productController.editProduct);
+
+
+// router.get('/products',
+//   auth.verify,
+//   productController.getProducts);
+
+// router.delete('/products/:productId',
+//   auth.verify,
+//   permissions.adminOnly,
+//   productController.deleteProduct);
 
 export default router;

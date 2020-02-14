@@ -1,8 +1,5 @@
 /* eslint-disable indent */
 import {
-  uuid
-} from 'uuidv4';
-import {
   User
 } from '../models';
 import {
@@ -54,7 +51,6 @@ class UserController {
       const hash = hashPassword(password);
 
       const user = await User.create({
-        userId: uuid(),
         firstName,
         lastName,
         email,
@@ -64,7 +60,7 @@ class UserController {
 
       const data = {
         message: 'User account successfully created',
-        userId: user.userId,
+        userId: user.id,
       };
       return handleSuccessResponse(res, data, 201);
     } catch (error) {
@@ -106,11 +102,9 @@ class UserController {
       }
 
       // Generate token
-      const payload = {
-        id: isUser.userid,
-        isAdmin: isUser.isAdmin,
-      };
-      const token = generateToken(payload);
+      const token = generateToken({
+        id: isUser.id,
+      });
 
       res.cookie('access_token', token, {
         maxAge: 60 * 60 * 1000, // 1 hour
@@ -124,7 +118,7 @@ class UserController {
         message: `Welcome ${isUser.firstName}`,
         data: {
           token,
-          userId: isUser.userId,
+          userId: isUser.id,
           firstName: isUser.firstName,
           lastName: isUser.lastName,
           email: isUser.email,
