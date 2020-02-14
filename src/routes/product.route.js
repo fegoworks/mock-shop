@@ -23,9 +23,9 @@ router.get('/products',
   auth.verify,
   productController.getProducts);
 
-// router.delete('/products/:productId',
-//   auth.verify,
-//   permissions.adminOnly,
-//   productController.deleteProduct);
+router.delete('/products/:productId',
+  auth.verify,
+  permissions.adminOnly,
+  productController.deleteProduct);
 
 export default router;
