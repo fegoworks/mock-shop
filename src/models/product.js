@@ -1,8 +1,10 @@
 const product = (sequelize, DataTypes) => {
   const Product = sequelize.define('Product', {
-    ProductId: {
-      type: DataTypes.STRING,
-      required: true
+    id: {
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
+      required: true,
+      primaryKey: true
     },
     name: {
       type: DataTypes.STRING,
@@ -24,20 +26,34 @@ const product = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       required: true
     },
+    imageName: {
+      type: DataTypes.STRING,
+      required: true
+    },
     inStock: {
       type: DataTypes.BOOLEAN,
       required: true
+    },
+    uploadedBy: {
+      type: DataTypes.STRING,
+      required: true,
+      references: {
+        model: 'Users',
+        key: 'id',
+      },
+      onUpdate: 'CASCADE',
+      onDelete: 'CASCADE',
     }
   }, {});
   Product.associate = (models) => {
     // associations can be defined here
     Product.belongsTo(models.User, {
-      foreignKey: 'userId'
+      foreignKey: 'id'
     });
 
-    // Product.hasMany(models.Cart, {
-    //   foreignKey: 'cartId'
-    // });
+    //   // Product.hasMany(models.Cart, {
+    //   //   foreignKey: 'cartId'
+    //   // });
   };
   return Product;
 };
