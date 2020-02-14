@@ -132,38 +132,38 @@ class ProductController {
     }
   }
 
-  // /**
-  //  * @description Delete product
-  //  * @static
-  //  * @param {object} req
-  //  * @param {object} res
-  //  * @returns {null} void
-  //  * @member ProductController
-  //  */
-  // static async deleteProduct(req, res) {
-  //   try {
-  //     const {
-  //       productId: id
-  //     } = req.params;
+  /**
+   * @description Delete product
+   * @static
+   * @param {object} req
+   * @param {object} res
+   * @returns {null} void
+   * @member ProductController
+   */
+  static async deleteProduct(req, res) {
+    try {
+      const {
+        productId: id
+      } = req.params;
 
-  //     const product = await Product.findByPk(id);
-  //     if (!product) {
-  //       return handleErrorResponse(res, 'Product not found', 404);
-  //     }
+      const product = await Product.findByPk(id);
+      if (!product) {
+        return handleErrorResponse(res, 'Product not found', 404);
+      }
 
-  //     await Product.destroy({
-  //       where: {
-  //         id
-  //       }
-  //     });
-  //     return res.status(204).json({
-  //       status: 'success',
-  //       message: 'product deleted successfully',
-  //     });
-  //   } catch (error) {
-  //     return handleErrorResponse(res, error.message, 500);
-  //   }
-  // }
+      await Product.destroy({
+        where: {
+          id
+        }
+      });
+      return res.status(204).json({
+        status: 'success',
+        message: 'product deleted successfully',
+      });
+    } catch (error) {
+      return handleErrorResponse(res, error.message, 500);
+    }
+  }
 }
 
 export default ProductController;
