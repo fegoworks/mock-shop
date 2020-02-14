@@ -115,22 +115,22 @@ class ProductController {
     }
   }
 
-  // /**
-  //  * @description Get all products
-  //  * @static
-  //  * @param {object} req
-  //  * @param {object} res
-  //  * @returns {object} products
-  //  * @member ProductController
-  //  */
-  // static async getProducts(req, res) {
-  //   try {
-  //     const products = await Product.findAll();
-  //     return handleSuccessResponse(res, products);
-  //   } catch (error) {
-  //     return handleErrorResponse(res, error.message, 500);
-  //   }
-  // }
+  /**
+   * @description Get all products
+   * @static
+   * @param {object} req
+   * @param {object} res
+   * @returns {object} products
+   * @member ProductController
+   */
+  static async getProducts(req, res) {
+    try {
+      const products = await Product.findAll();
+      return handleSuccessResponse(res, products);
+    } catch (error) {
+      return handleErrorResponse(res, error.message, 500);
+    }
+  }
 
   // /**
   //  * @description Delete product
