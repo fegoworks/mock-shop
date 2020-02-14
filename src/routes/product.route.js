@@ -19,9 +19,9 @@ router.patch('/products/:productId',
   productController.editProduct);
 
 
-// router.get('/products',
-//   auth.verify,
-//   productController.getProducts);
+router.get('/products',
+  auth.verify,
+  productController.getProducts);
 
 // router.delete('/products/:productId',
 //   auth.verify,
