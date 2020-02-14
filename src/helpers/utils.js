@@ -2,7 +2,8 @@
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import fs from 'fs';
-import cloudinary from '../configs/cloudinary';
+import cloudinary from 'cloudinary';
+import cloud from '../configs/cloudinary';
 /**
  * @param {string} password
  * @return {string} hash
@@ -56,7 +57,7 @@ export const checkAdmin = (isAdmin) => {
 export const cloudLink = async (file) => {
   try {
     // Upload file to cloudinary
-    const uploader = async (path) => cloudinary.uploads(path, 'Images');
+    const uploader = (path) => cloud.uploads(path, 'Images');
     const {
       path,
     } = file;
@@ -70,4 +71,17 @@ export const cloudLink = async (file) => {
       error,
     };
   }
+};
+
+export const unLink = async (imageId) => {
+  await cloudinary.uploader.destroy(imageId, (error, result) => {
+    if (error) {
+      return {
+        status: 'Request failed',
+        error,
+      };
+    }
+
+    return result;
+  });
 };
