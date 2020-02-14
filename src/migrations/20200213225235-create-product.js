@@ -23,11 +23,11 @@ module.exports = {
     },
     imageUrl: {
       type: Sequelize.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     imageName: {
       type: Sequelize.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     inStock: {
       type: Sequelize.BOOLEAN,

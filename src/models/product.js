@@ -24,11 +24,11 @@ const product = (sequelize, DataTypes) => {
     },
     imageUrl: {
       type: DataTypes.STRING,
-      required: true
+      required: false
     },
     imageName: {
       type: DataTypes.STRING,
-      required: true
+      required: false
     },
     inStock: {
       type: DataTypes.BOOLEAN,
