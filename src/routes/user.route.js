@@ -12,4 +12,6 @@ router.post('/auth/signin',
   validate.validateBody(validate.schemas.authLoginSchema),
   UserController.signIn);
 
+router.get('/users',
+  UserController.getUsers);
 export default router;

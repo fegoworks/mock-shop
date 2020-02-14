@@ -128,6 +128,15 @@ class UserController {
       return handleErrorResponse(res, error.message, 500);
     }
   }
+
+  static async getUsers(req, res) {
+    try {
+      const users = await User.findAll();
+      return handleSuccessResponse(res, users);
+    } catch (error) {
+      return handleErrorResponse(res, error.message, 500);
+    }
+  }
 }
 
 export default UserController;
