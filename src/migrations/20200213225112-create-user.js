@@ -1,14 +1,9 @@
 module.exports = {
   up: (queryInterface, Sequelize) => queryInterface.createTable('Users', {
     id: {
-      allowNull: false,
-      type: Sequelize.INTEGER,
-      autoIncrement: true,
-    },
-    userId: {
-      allowNull: false,
+      type: Sequelize.UUID,
       primaryKey: true,
-      type: Sequelize.STRING,
+      allowNull: false,
     },
     firstName: {
       type: Sequelize.STRING,
@@ -21,7 +16,6 @@ module.exports = {
     email: {
       type: Sequelize.STRING,
       allowNull: false,
-      unique: true,
     },
     password: {
       type: Sequelize.STRING,
@@ -30,15 +24,18 @@ module.exports = {
     isAdmin: {
       type: Sequelize.BOOLEAN,
       allowNull: false,
+      defaultValue: false,
     },
     createdAt: {
-      allowNull: false,
       type: Sequelize.DATE,
+      allowNull: false,
+      defaultValue: Sequelize.NOW(),
     },
     updatedAt: {
-      allowNull: false,
       type: Sequelize.DATE,
+      allowNull: true,
     },
   }),
-  down: (queryInterface) => queryInterface.dropTable('Users'),
+  // eslint-disable-next-line no-unused-vars
+  down: (queryInterface, Sequelize) => queryInterface.dropTable('Users'),
 };

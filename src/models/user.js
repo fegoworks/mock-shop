@@ -1,8 +1,10 @@
 const user = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
-    userId: {
-      type: DataTypes.STRING,
-      required: true
+    id: {
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
+      required: true,
+      primaryKey: true
     },
     firstName: {
       type: DataTypes.STRING,
@@ -28,7 +30,7 @@ const user = (sequelize, DataTypes) => {
   User.associate = (models) => {
     // associations can be defined here
     User.hasMany(models.Product, {
-      foreignKey: 'productId'
+      foreignKey: 'id'
     });
 
     // User.hasMany(models.Cart, {
