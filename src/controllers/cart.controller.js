@@ -64,7 +64,7 @@ class CartController {
         plain: true
       }));
 
-      if (productsInCart.length < 0) {
+      if (productsInCart.length === 0) {
         return handleErrorResponse(res, 'Cart is empty', 400);
       }
 
