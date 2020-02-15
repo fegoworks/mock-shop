@@ -3,7 +3,6 @@ const {
   uuid
 } = require('uuidv4');
 
-const pass = '$2a$10$n8.VJxTUhes7lDg/tZWZweApDNfPtj347S0H3x5p1RbklrVTZOqgG';
 module.exports = {
   up: (queryInterface, Sequelize) => queryInterface.bulkInsert(
     'Products',
@@ -14,7 +13,7 @@ module.exports = {
         category: 'Foods',
         price: 500,
         inStock: 'true',
-        uploadedBy: '',
+        uploadedBy: '755fa472-0e36-4e3a-916b-4c4113658df2',
         createdAt: new Date(),
         updatedAt: new Date(),
         imageUrl: '',
@@ -27,7 +26,7 @@ module.exports = {
         category: 'Foods',
         price: 3000,
         inStock: 'true',
-        uploadedBy: '',
+        uploadedBy: '755fa472-0e36-4e3a-916b-4c4113658df2',
         createdAt: new Date(),
         updatedAt: new Date(),
         imageUrl: '',
@@ -40,7 +39,7 @@ module.exports = {
         category: 'clothes',
         price: 5000,
         inStock: 'false',
-        uploadedBy: '',
+        uploadedBy: '639e9ab1-5a43-48a4-ac03-ed3292db4982',
         createdAt: new Date(),
         updatedAt: new Date(),
         imageUrl: '',
@@ -53,7 +52,7 @@ module.exports = {
         category: 'accesories',
         price: 230,
         inStock: 'true',
-        uploadedBy: '',
+        uploadedBy: '639e9ab1-5a43-48a4-ac03-ed3292db4982',
         createdAt: new Date(),
         updatedAt: new Date(),
         imageUrl: '',
@@ -66,7 +65,7 @@ module.exports = {
         category: 'Clothes',
         price: 490,
         inStock: false,
-        uploadedBy: '',
+        uploadedBy: '755fa472-0e36-4e3a-916b-4c4113658df2',
         createdAt: new Date(),
         updatedAt: new Date(),
         imageUrl: '',
